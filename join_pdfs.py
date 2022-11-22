@@ -47,13 +47,18 @@ def popUp(input_text):
     b = tk.Button(win, text="Okay", command=win.destroy)
     b.grid(row=1, column=0)
         
-def addFile():
-    filename = filedialog.askopenfilename(initialdir="./", title="Wähle Dokument",
-                                          filetypes=(("PDF Dokumente", "*.pdf"), ("Alle Dateien", "*.*")))
+def addFiles():
+    filenames = filedialog.askopenfilenames(initialdir="./", title="Wähle Dokumente",
+                                           filetypes=(("PDF Dokumente", "*.pdf"), ("Alle Dateien", "*.*")))
     
-    if path.splitext(filename)[1] == ".pdf":    
-        listbox.insert("end", filename)
-    else:
+    correct_selection = True
+    for filename in filenames:
+        if path.splitext(filename)[1] == ".pdf":    
+            listbox.insert("end", filename)
+        else:
+            correct_selection = False
+        
+    if correct_selection == False:
         popUp("Nur PDF-Dateien können ausgewählt werden.")
 
 def deleteFile():
@@ -96,7 +101,7 @@ if __name__ == "__main__":
     
     ## Left side buttons
     openFile = tk.Button(root, text = "PDF hinzufügen", padx=10, pady=10, fg="white", 
-                         bg=col, command=addFile)
+                         bg=col, command=addFiles)
     openFile.pack(side='left')
     
     delFile = tk.Button(root, text = "Auswahl löschen", padx=10, pady=10, fg="white", 
