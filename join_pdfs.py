@@ -96,8 +96,12 @@ if __name__ == "__main__":
     frame = tk.Frame(root, bg="white")
     frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
     
+
     listbox = DragDropListbox(frame)
     listbox.pack(expand=True, fill=tk.BOTH)
+    
+    scrollbar = tk.Scrollbar(listbox, orient="vertical")
+    scrollbar.pack(side="right", fill="y")
     
     ## Left side buttons
     openFile = tk.Button(root, text = "PDF hinzufügen", padx=10, pady=10, fg="white", 
