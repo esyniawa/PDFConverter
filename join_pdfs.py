@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
 
 import tkinter as tk 
 from tkinter import filedialog
 
 from os import path
-from PyPDF2 import PdfFileMerger
+from PyPDF2 import PdfMerger
 
 col = "#3b5a7f"
 
@@ -71,7 +66,7 @@ def mergeFiles():
     files = listbox.get(0, "end")
     
     if len(files) > 0:  
-        merger = PdfFileMerger()
+        merger = PdfMerger()
         for file in files:
             merger.append(file)
             
