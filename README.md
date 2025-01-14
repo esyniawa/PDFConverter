@@ -1,2 +1,2 @@
 # PDFConverter
-Programm to work with PDFs
+Program to merge different .pdfs and compress their file size via qpdf, pikepdf or an image compression. 
